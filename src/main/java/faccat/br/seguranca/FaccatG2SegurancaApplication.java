@@ -16,7 +16,7 @@ public class FaccatG2SegurancaApplication implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/usuario/**")
+        registry.addMapping("/**")
                 .allowedMethods("*")
                 .allowedOrigins("*");
     }
