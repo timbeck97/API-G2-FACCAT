@@ -8,6 +8,7 @@ package faccat.br.seguranca.security;
 import faccat.br.seguranca.service.ImplementacaoUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,16 +38,15 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         .disable().authorizeRequests().antMatchers("/").permitAll()
         .antMatchers("/index").permitAll()
+        .antMatchers(HttpMethod.OPTIONS,"/**").permitAll() //libera todos metodos
         .anyRequest().authenticated().and().logout().logoutSuccessUrl("/index")
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .and().addFilterBefore(new JWTLoginFilter("/login", authenticationManager()) , UsernamePasswordAuthenticationFilter.class)
         .addFilterBefore(new JWTApiAutenticacaoFIlter(), UsernamePasswordAuthenticationFilter.class);
             
-        http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
+        //http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
         
-        //falta filtros de login para autenticacao
-        
-        //filtro requisicoes para verificar token
+  
                 
     }
 

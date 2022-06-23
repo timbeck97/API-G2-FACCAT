@@ -1,12 +1,15 @@
 
 package faccat.br.seguranca.model;
 
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+
 
 /**
  *
@@ -19,11 +22,13 @@ public class Candidato implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATO")
     @Id
     private Long id;
-    
+    @NotNull
     private String nome;
+    @NotNull
     private String telefone;
     private String email;
     private String enderecoWeb;
+    @NotNull
     private String experienciaProfissional;
     
     

@@ -7,11 +7,13 @@ package faccat.br.seguranca.repositories;
 
 import faccat.br.seguranca.model.Candidato;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author tim
  */
+@Repository
 public interface CandidatoRepository extends JpaRepository<Candidato, Long> {
     
 }

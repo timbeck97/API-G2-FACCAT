@@ -7,11 +7,13 @@ package faccat.br.seguranca.repositories;
 
 import faccat.br.seguranca.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author tim
  */
+@Repository
 public interface UsuarioRepositorie extends JpaRepository<Usuario, Long> {
     
     Usuario findByLogin(String login);

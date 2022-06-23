@@ -77,21 +77,5 @@ public class CandidatoController {
       
         
     }
-    /*
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    @GetMapping(value = "/1")
-    public String testeRole1(){
-        return "Acessou";
-    }
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO')")
-    @GetMapping(value = "/2")
-    public String testeRole2(){
-        return "Acessou";
-    }
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO','ROLE_ADMIN')")
-    @GetMapping(value = "/3")
-    public String testeRole3(){
-        return "Acessou";
-    }
-    */
+   
 }
