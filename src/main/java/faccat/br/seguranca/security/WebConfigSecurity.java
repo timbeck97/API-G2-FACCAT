@@ -44,7 +44,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
         .and().addFilterBefore(new JWTLoginFilter("/login", authenticationManager()) , UsernamePasswordAuthenticationFilter.class)
         .addFilterBefore(new JWTApiAutenticacaoFIlter(), UsernamePasswordAuthenticationFilter.class);
             
-        //http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
+        http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
         
   
                 
