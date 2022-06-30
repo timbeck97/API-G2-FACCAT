@@ -7,6 +7,8 @@ package faccat.br.seguranca.security;
 
 import faccat.br.seguranca.service.ImplementacaoUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -35,6 +37,12 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http
+          .headers()
+          .xssProtection()
+          .and()
+          .contentSecurityPolicy("script-src 'self'");
+        
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         .disable().authorizeRequests().antMatchers("/").permitAll()
         .antMatchers("/index").permitAll()
@@ -45,8 +53,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
         .addFilterBefore(new JWTApiAutenticacaoFIlter(), UsernamePasswordAuthenticationFilter.class);
             
         http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
-        
-  
+          
                 
     }
 
@@ -59,7 +66,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
         .userDetailsService(implementacaoUserDetailService) //Servico que ira consultar o usuario no banco de dados
         .passwordEncoder(new BCryptPasswordEncoder()); //codificacao de senha bcrypt
     }
+   
     
-    
-    
+      
 }

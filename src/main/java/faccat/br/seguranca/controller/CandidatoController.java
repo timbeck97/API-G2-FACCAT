@@ -9,6 +9,7 @@ import faccat.br.seguranca.model.Candidato;
 import faccat.br.seguranca.repositories.CandidatoRepository;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,13 +49,13 @@ public class CandidatoController {
     
     @PreAuthorize("hasAnyRole('ROLE_USUARIO','ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<Candidato> salvaCandidato(@RequestBody Candidato candidato){
+    public ResponseEntity<Candidato> salvaCandidato(@RequestBody @Valid Candidato candidato){
         return ResponseEntity.ok(repositorie.save(candidato));
     }
     
     @PreAuthorize("hasAnyRole('ROLE_USUARIO','ROLE_ADMIN')")
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Candidato> atualizaCandidato(@RequestBody Candidato candidato, @PathVariable Long id){
+    public ResponseEntity<Candidato> atualizaCandidato(@RequestBody @Valid Candidato candidato, @PathVariable Long id){
         return repositorie.findById(id).map(c->{
         c.setNome(candidato.getNome());
         c.setTelefone(candidato.getTelefone());

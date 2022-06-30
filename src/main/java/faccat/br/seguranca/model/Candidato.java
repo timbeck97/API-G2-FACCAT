@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Pattern;
 
 
 /**
@@ -26,8 +27,14 @@ public class Candidato implements Serializable {
     private String nome;
     @NotNull
     private String telefone;
+    
+   
     private String email;
+    
+    
     private String enderecoWeb;
+    
+    
     @NotNull
     private String experienciaProfissional;
     
