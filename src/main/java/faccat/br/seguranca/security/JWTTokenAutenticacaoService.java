@@ -59,7 +59,7 @@ public class JWTTokenAutenticacaoService {
         
         response.addHeader(HEADER_STRING, token); //adiciona token ao cabeçalho da resposta -> Authorization: Bearer token.....
         
-        liberacaoCors(response); //adicionaod cabecalhos para liberar CORS
+        //liberacaoCors(response); //adicionaod cabecalhos para liberar CORS
         
         //escreve o token no corpo da resposta http
         response.getWriter().write("{\"Authorization\": \""+token+"\"}");
@@ -83,7 +83,7 @@ public class JWTTokenAutenticacaoService {
                 }
             }
         }
-            liberacaoCors(response); //adicionaod cabecalhos para liberar CORS
+            //liberacaoCors(response); //adicionaod cabecalhos para liberar CORS
             return null; // nao autorizado
         
     }

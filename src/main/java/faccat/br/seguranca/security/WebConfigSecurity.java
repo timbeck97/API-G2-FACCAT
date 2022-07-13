@@ -37,12 +37,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-          .headers()
-          .xssProtection()
-          .and()
-          .contentSecurityPolicy("script-src 'self'");
-        
+       
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         .disable().authorizeRequests().antMatchers("/").permitAll()
         .antMatchers("/index").permitAll()
@@ -52,8 +47,8 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
         .and().addFilterBefore(new JWTLoginFilter("/login", authenticationManager()) , UsernamePasswordAuthenticationFilter.class)
         .addFilterBefore(new JWTApiAutenticacaoFIlter(), UsernamePasswordAuthenticationFilter.class);
             
-        http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
-          
+        //http.cors(); //para aplicar o filtro de cors (funcao de config de cors la no metodo main)
+      
                 
     }
 

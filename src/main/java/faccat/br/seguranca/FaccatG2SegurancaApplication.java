@@ -12,6 +12,7 @@ public class FaccatG2SegurancaApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		SpringApplication.run(FaccatG2SegurancaApplication.class, args);
                 System.out.println(new BCryptPasswordEncoder().encode("teste123"));
+                
 	}
 
     @Override

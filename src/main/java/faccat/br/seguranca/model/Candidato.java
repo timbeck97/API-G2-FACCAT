@@ -23,8 +23,10 @@ public class Candidato implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATO")
     @Id
     private Long id;
+    @Pattern(message="Aceita apenas numeros ou letras", regexp = "[a-zA-Z0-9 ]+")
     @NotNull
     private String nome;
+    @Pattern(message="Aceita apenas numeros ou letras", regexp = "[a-zA-Z0-9 ]+")
     @NotNull
     private String telefone;
     
