@@ -2,13 +2,18 @@
 package faccat.br.seguranca.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
 
@@ -30,7 +35,10 @@ public class Candidato implements Serializable {
     @NotNull
     private String telefone;
     
-   
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT-3")
+    private Date dataNascimento;
+
     private String email;
     
     
