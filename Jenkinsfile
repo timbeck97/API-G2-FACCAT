@@ -12,8 +12,10 @@ pipeline {
         }
         stage('StopService') {
             steps {
-                sh 'chmod +x stopService.sh'
-                sh './stopService.sh'
+                script{
+                     chmod +x stopService.sh
+                      ./stopService.sh'
+                }
             }
         }
         stage('Deploy') {
