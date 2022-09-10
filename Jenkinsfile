@@ -12,12 +12,8 @@ pipeline {
         }
         stage('StopService') {
             steps {
-                script{
-                     for pid in `ps aux | grep FACCAT-G2-SEGURANCA | awk '{print $2}'`
-                    do
-                        kill $pid
-                    done
-                }
+                sh 'chmod +x stopService.sh'
+                sh './stopService.sh'
             }
         }
         stage('Deploy') {
