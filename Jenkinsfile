@@ -1,16 +1,12 @@
 pipeline {
     agent any
-     tools { 
-        maven '3.8.5' 
-        jdk '8' 
-    }
     stages {
-        stage('Build') {
+        stage('Docker build') {
             steps {
                 sh 'docker build -t appfaccat/1.0 .'
             }
         }
-        stage('StopService') {
+        stage('Docker run') {
             steps {
                 sh 'docker run -p 8082:8082 appfaccat/1.0 .'
                
