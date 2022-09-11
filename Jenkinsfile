@@ -7,19 +7,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'docker build -t appfaccat/1.0 .'
             }
         }
         stage('StopService') {
             steps {
-                sh 'chmod +x stopService.sh'
-                sh ' bash stopService.sh'
+                sh 'docker run -p 8081:8081 appfaccat:1.0 .'
+               
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'java -jar /var/jenkins_home/workspace/api-jenkins/target/demo-0.0.1-SNAPSHOT.jar --server.port=8081'
-            }
-        }
+       
     }
 }
