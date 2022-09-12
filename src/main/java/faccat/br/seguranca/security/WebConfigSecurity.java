@@ -41,6 +41,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         .disable().authorizeRequests().antMatchers("/").permitAll()
         .antMatchers("/index").permitAll()
+        .antMatchers("/teste").permitAll()
         .antMatchers(HttpMethod.OPTIONS,"/**").permitAll() //libera todos metodos
         .anyRequest().authenticated().and().logout().logoutSuccessUrl("/index")
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
