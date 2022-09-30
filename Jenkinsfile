@@ -12,7 +12,7 @@ pipeline {
         }
         stage('maven run') {
             steps {
-                sh 'mvn spring-boot:run &'
+                sh 'java -jar /var/lib/jenkins/workspace/FACCAT/target/demo-0.0.1-SNAPSHOT.jar &'
                
             }
         }
