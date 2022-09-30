@@ -11,7 +11,7 @@ pipeline {
         }
         stage('maven run') {
             steps {
-                sh './mvnw spring-boot:run'
+                sh 'mvn spring-boot:run'
                
             }
         }
