@@ -1,14 +1,17 @@
 pipeline {
     agent any
+    tools{
+        maven "MAVEN"
+    }
     stages {
-        stage('Docker build') {
+        stage('maven build') {
             steps {
-                sh 'docker build -t appfaccat/1.0 .'
+                sh 'mvn -Dmaven.test.failure.ignore=true clean package'
             }
         }
-        stage('Docker run') {
+        stage('maven run') {
             steps {
-                sh 'docker run -p 8082:8080 -d --network newnetwork appfaccat/1.0 .'
+                sh './mvnw spring-boot:run'
                
             }
         }
